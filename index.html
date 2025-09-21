@@ -3,29 +3,461 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketeria</title>
+    <title>Marketeria - Marketing Digital e Gestão Comercial</title>
+    <meta name="description" content="Marketeria - Sua plataforma completa de marketing digital e gestão comercial. Pré-qualificação inteligente para leads qualificados.">
     <link rel="stylesheet" href="App.css">
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
 </head>
 <body>
     <div id="root">
-        <div id="app"></div>
+        <!-- Landing Page Content -->
+        <div class="app">
+            <div class="landing-page">
+                <!-- Header with Logo -->
+                <header class="header">
+                    <div class="header-content">
+                        <div class="logo-section">
+                            <img src="logo.svg" alt="Marketeria Logo" class="logo">
+                            <h1 class="site-title">Marketeria</h1>
+                        </div>
+                        <nav class="nav-menu">
+                            <a href="#prequalificacao" class="nav-button" onclick="showPage('prequalificacao')">
+                                Pré-qualificação
+                            </a>
+                            <a href="#prequalificacao-improved" class="nav-button" onclick="showPage('prequalificacao-improved')">
+                                Pré-qualificação Melhorada
+                            </a>
+                        </nav>
+                    </div>
+                </header>
+
+                <!-- Main Content -->
+                <main class="main-content">
+                    <section class="hero-section">
+                        <h2 class="hero-title">Bem-vindo ao Marketeria</h2>
+                        <p class="hero-description">
+                            Sua plataforma completa de marketing digital e gestão comercial.
+                        </p>
+                        <div class="hero-actions">
+                            <button class="cta-button primary" onclick="showPage('prequalificacao')">
+                                Começar Pré-qualificação
+                            </button>
+                            <button class="cta-button secondary" onclick="showPage('prequalificacao-improved')">
+                                Versão Melhorada
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="features-section">
+                        <h3>Nossos Recursos</h3>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <h4>Pré-qualificação Inteligente</h4>
+                                <p>Sistema avançado para qualificação de leads e prospects.</p>
+                            </div>
+                            <div class="feature-card">
+                                <h4>Gestão Comercial</h4>
+                                <p>Ferramentas completas para gestão do seu pipeline comercial.</p>
+                            </div>
+                            <div class="feature-card">
+                                <h4>Marketing Digital</h4>
+                                <p>Soluções integradas para suas estratégias de marketing.</p>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <p>&copy; 2024 Marketeria. Todos os direitos reservados.</p>
+                </footer>
+            </div>
+        </div>
     </div>
-    
-    <!-- React Development Scripts -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <!-- Main App Component -->
-    <script type="text/babel" src="App.jsx"></script>
-    <script type="text/babel" src="PreQualificacaoPage.jsx"></script>
-    <script type="text/babel" src="PreQualificacaoPageImproved.jsx"></script>
-    
-    <!-- Initialize App -->
-    <script type="text/babel">
-        const { createRoot } = ReactDOM;
-        const root = createRoot(document.getElementById('app'));
-        root.render(<App />);
+
+    <!-- Separate pages that will be shown/hidden -->
+    <div id="prequalificacao-page" class="page-container" style="display: none;">
+        <button class="back-button" onclick="showPage('home')">
+            ← Voltar
+        </button>
+        
+        <div class="page-header">
+            <h2>Pré-qualificação de Clientes</h2>
+            <p>Preencha o formulário abaixo para avaliarmos como podemos ajudar sua empresa</p>
+        </div>
+
+        <form id="prequalificacao-form" onsubmit="submitBasicForm(event)">
+            <div class="form-group">
+                <label for="nomeEmpresa">Nome da Empresa *</label>
+                <input type="text" id="nomeEmpresa" name="nomeEmpresa" required placeholder="Digite o nome da sua empresa">
+            </div>
+
+            <div class="form-group">
+                <label for="segmento">Segmento de Atuação *</label>
+                <select id="segmento" name="segmento" required>
+                    <option value="">Selecione o segmento</option>
+                    <option value="tecnologia">Tecnologia</option>
+                    <option value="saude">Saúde</option>
+                    <option value="educacao">Educação</option>
+                    <option value="financeiro">Financeiro</option>
+                    <option value="varejo">Varejo</option>
+                    <option value="industria">Indústria</option>
+                    <option value="servicos">Serviços</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tamanhoEmpresa">Tamanho da Empresa *</label>
+                <select id="tamanhoEmpresa" name="tamanhoEmpresa" required>
+                    <option value="">Selecione o tamanho</option>
+                    <option value="micro">Micro (até 9 funcionários)</option>
+                    <option value="pequena">Pequena (10-49 funcionários)</option>
+                    <option value="media">Média (50-249 funcionários)</option>
+                    <option value="grande">Grande (250+ funcionários)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="experienciaMarketing">Experiência com Marketing Digital</label>
+                <select id="experienciaMarketing" name="experienciaMarketing">
+                    <option value="">Selecione sua experiência</option>
+                    <option value="nenhuma">Nenhuma experiência</option>
+                    <option value="basica">Básica</option>
+                    <option value="intermediaria">Intermediária</option>
+                    <option value="avancada">Avançada</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="orcamentoMarketing">Orçamento Mensal para Marketing</label>
+                <select id="orcamentoMarketing" name="orcamentoMarketing">
+                    <option value="">Selecione a faixa de orçamento</option>
+                    <option value="baixo">Até R$ 5.000</option>
+                    <option value="medio">R$ 5.000 - R$ 20.000</option>
+                    <option value="alto">Acima de R$ 20.000</option>
+                    <option value="variavel">Orçamento variável</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="principalDesafio">Principal Desafio de Marketing</label>
+                <textarea id="principalDesafio" name="principalDesafio" rows="3" 
+                         placeholder="Descreva seu principal desafio..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="urgencia">Urgência do Projeto</label>
+                <select id="urgencia" name="urgencia">
+                    <option value="">Selecione a urgência</option>
+                    <option value="imediata">Imediata (início em 1-2 semanas)</option>
+                    <option value="curto">Curto prazo (1-2 meses)</option>
+                    <option value="medio">Médio prazo (3-6 meses)</option>
+                    <option value="longo">Longo prazo (6+ meses)</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-button">
+                    Avaliar Pré-qualificação
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Advanced Pre-qualification Page -->
+    <div id="prequalificacao-improved-page" class="page-container" style="display: none;">
+        <button class="back-button" onclick="showPage('home')">
+            ← Voltar
+        </button>
+        
+        <div class="page-header">
+            <h2>🎯 Pré-qualificação Avançada</h2>
+            <p>Análise completa e personalizada para sua empresa</p>
+            
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-steps">
+                    <div class="progress-step active" id="step-1">1</div>
+                    <div class="progress-step" id="step-2">2</div>
+                    <div class="progress-step" id="step-3">3</div>
+                    <div class="progress-step" id="step-4">4</div>
+                </div>
+                <div class="progress-text">
+                    Etapa <span id="current-step">1</span> de 4
+                </div>
+            </div>
+        </div>
+
+        <form id="advanced-form" onsubmit="submitAdvancedForm(event)">
+            <!-- Step 1 -->
+            <div id="advanced-step-1" class="step-content">
+                <h3>📊 Informações da Empresa</h3>
+                <p>Vamos começar conhecendo sua empresa</p>
+                
+                <div class="form-group">
+                    <label for="adv-nomeEmpresa">Nome da Empresa *</label>
+                    <input type="text" id="adv-nomeEmpresa" name="nomeEmpresa" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="adv-segmento">Segmento de Atuação *</label>
+                    <select id="adv-segmento" name="segmento" required>
+                        <option value="">Selecione o segmento</option>
+                        <option value="tecnologia">Tecnologia</option>
+                        <option value="saude">Saúde</option>
+                        <option value="educacao">Educação</option>
+                        <option value="financeiro">Financeiro</option>
+                        <option value="varejo">Varejo</option>
+                        <option value="industria">Indústria</option>
+                        <option value="servicos">Serviços</option>
+                        <option value="consultoria">Consultoria</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="adv-tamanhoEmpresa">Tamanho da Empresa *</label>
+                    <select id="adv-tamanhoEmpresa" name="tamanhoEmpresa" required>
+                        <option value="">Selecione o tamanho</option>
+                        <option value="micro">Micro (até 9 funcionários)</option>
+                        <option value="pequena">Pequena (10-49 funcionários)</option>
+                        <option value="media">Média (50-249 funcionários)</option>
+                        <option value="grande">Grande (250+ funcionários)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="faturamentoAnual">Faturamento Anual</label>
+                    <select id="faturamentoAnual" name="faturamentoAnual">
+                        <option value="">Selecione a faixa</option>
+                        <option value="baixo">Até R$ 1 milhão</option>
+                        <option value="medio">R$ 1 - 10 milhões</option>
+                        <option value="alto">Acima de R$ 10 milhões</option>
+                        <option value="nao-informar">Prefiro não informar</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <div class="form-actions">
+                <button type="button" id="prev-btn" onclick="previousStep()" class="back-button" style="display: none;">
+                    ← Anterior
+                </button>
+                <button type="button" id="next-btn" onclick="nextStep()" class="submit-button">
+                    Próximo →
+                </button>
+                <button type="submit" id="submit-btn" class="submit-button" style="display: none;">
+                    🎯 Finalizar Análise
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- JavaScript for functionality -->
+    <script>
+        // Global variables
+        let currentAdvancedStep = 1;
+        const totalSteps = 4;
+
+        // Navigation functions
+        function showPage(pageId) {
+            // Hide all pages
+            document.getElementById('root').style.display = 'none';
+            document.getElementById('prequalificacao-page').style.display = 'none';
+            document.getElementById('prequalificacao-improved-page').style.display = 'none';
+            
+            // Show selected page
+            if (pageId === 'home') {
+                document.getElementById('root').style.display = 'block';
+                window.history.pushState({}, '', '/');
+            } else if (pageId === 'prequalificacao') {
+                document.getElementById('prequalificacao-page').style.display = 'block';
+                window.history.pushState({}, '', '#prequalificacao');
+            } else if (pageId === 'prequalificacao-improved') {
+                document.getElementById('prequalificacao-improved-page').style.display = 'block';
+                window.history.pushState({}, '', '#prequalificacao-improved');
+            }
+        }
+
+        // Advanced form navigation
+        function nextStep() {
+            if (currentAdvancedStep < totalSteps) {
+                currentAdvancedStep++;
+                updateAdvancedStep();
+            }
+        }
+
+        function previousStep() {
+            if (currentAdvancedStep > 1) {
+                currentAdvancedStep--;
+                updateAdvancedStep();
+            }
+        }
+
+        function updateAdvancedStep() {
+            // Update progress indicator
+            document.getElementById('current-step').textContent = currentAdvancedStep;
+            
+            // Update progress steps visual
+            for (let i = 1; i <= totalSteps; i++) {
+                const stepEl = document.getElementById('step-' + i);
+                if (i <= currentAdvancedStep) {
+                    stepEl.classList.add('active');
+                } else {
+                    stepEl.classList.remove('active');
+                }
+            }
+
+            // Show/hide navigation buttons
+            document.getElementById('prev-btn').style.display = currentAdvancedStep > 1 ? 'block' : 'none';
+            document.getElementById('next-btn').style.display = currentAdvancedStep < totalSteps ? 'block' : 'none';
+            document.getElementById('submit-btn').style.display = currentAdvancedStep === totalSteps ? 'block' : 'none';
+
+            // Here you would show/hide different step content
+            // For now, just the first step is implemented in HTML
+        }
+
+        // Form submission handlers
+        function submitBasicForm(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simple scoring algorithm
+            let score = calculateBasicScore(data);
+            let qualification = getQualificationLevel(score);
+            
+            alert(`Resultado da Pré-qualificação:\\n\\nScore: ${score}/100\\nStatus: ${qualification}\\n\\nObrigado por suas informações!`);
+        }
+
+        function submitAdvancedForm(event) {
+            event.preventDefault();
+            alert('🎯 Análise Avançada Concluída!\\n\\nSua pré-qualificação foi enviada com sucesso.\\nNossa equipe entrará em contato em breve.\\n\\nObrigado!');
+        }
+
+        function calculateBasicScore(data) {
+            let score = 0;
+            
+            // Company size scoring
+            if (data.tamanhoEmpresa === 'grande') score += 30;
+            else if (data.tamanhoEmpresa === 'media') score += 20;
+            else if (data.tamanhoEmpresa === 'pequena') score += 10;
+            
+            // Budget scoring
+            if (data.orcamentoMarketing === 'alto') score += 25;
+            else if (data.orcamentoMarketing === 'medio') score += 15;
+            else if (data.orcamentoMarketing === 'baixo') score += 5;
+            
+            // Urgency scoring
+            if (data.urgencia === 'imediata') score += 20;
+            else if (data.urgencia === 'curto') score += 15;
+            else if (data.urgencia === 'medio') score += 10;
+            else if (data.urgencia === 'longo') score += 5;
+            
+            // Experience scoring
+            if (data.experienciaMarketing === 'avancada') score += 15;
+            else if (data.experienciaMarketing === 'intermediaria') score += 10;
+            else if (data.experienciaMarketing === 'basica') score += 8;
+            else if (data.experienciaMarketing === 'nenhuma') score += 5;
+            
+            return Math.min(score, 100);
+        }
+
+        function getQualificationLevel(score) {
+            if (score >= 70) return 'ALTA PRIORIDADE - Lead Qualificado';
+            else if (score >= 50) return 'MÉDIA PRIORIDADE - Lead Promissor';
+            else if (score >= 30) return 'BAIXA PRIORIDADE - Lead para Nutrição';
+            else return 'NÃO QUALIFICADO - Requer mais informações';
+        }
+
+        // Handle browser back/forward
+        window.addEventListener('popstate', function() {
+            const hash = window.location.hash;
+            if (hash === '#prequalificacao') {
+                showPage('prequalificacao');
+            } else if (hash === '#prequalificacao-improved') {
+                showPage('prequalificacao-improved');
+            } else {
+                showPage('home');
+            }
+        });
+
+        // Initialize the page
+        window.addEventListener('load', function() {
+            const hash = window.location.hash;
+            if (hash === '#prequalificacao') {
+                showPage('prequalificacao');
+            } else if (hash === '#prequalificacao-improved') {
+                showPage('prequalificacao-improved');
+            } else {
+                showPage('home');
+            }
+        });
     </script>
+
+    <style>
+        /* Additional styles for the progress bar */
+        .progress-bar {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e9ecef;
+            color: #6c757d;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-step.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .progress-text {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .step-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-content p {
+            color: #6c757d;
+            margin-bottom: 2rem;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        /* Make pages take full height */
+        .page-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </body>
 </html>
